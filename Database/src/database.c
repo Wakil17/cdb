@@ -46,10 +46,8 @@ int execute_command(Node** root, Command cmd) {
     return 0;
    
 }
-Node* init_database() {
-    // TODO: Initialiser la base de données
-    return NULL;
-}
+
+
 
 void cleanup_database(Node* root) {
     // TODO: Nettoyer la base de données
@@ -58,3 +56,45 @@ void cleanup_database(Node* root) {
     printf("Base de donnée nettoyée et sauvegardée avec succès !\n");
 }
 
+void save_database(Node* root) {
+    FILE* file = fopen("database.txt", "w");
+    if (file == NULL) {
+        printf("Erreur lors de la sauvegarde de la base de données.\n");
+        return;
+    }
+
+    save_node(root, file);
+    fclose(file);
+    printf("Base de données sauvegardée avec succès.\n");
+}
+
+void save_node(Node* node, FILE* file) {
+    if (node == NULL) return;
+    
+    save_node(node->left, file);
+    fprintf(file, "%d %s %s\n", node->data.id, node->data.Marque, node->data.Modele);
+    save_node(node->right, file);
+}
+Node* init_database() {
+    Node* root = NULL;
+    FILE* file = fopen("database.txt", "r");
+    if (file == NULL) {
+        printf("Aucune base de données existante trouvée. Création d'une nouvelle base.\n");
+        return root;
+    }
+
+    int id;
+    char marque[MAX_MARQUE_LENGTH];
+    char modele[MAX_MODELE_LENGTH];
+
+    while (fscanf(file, "%d %s %s", &id, marque, modele) == 3) {
+        Voiture v = {id, "", ""};
+        strncpy(v.Marque, marque, MAX_MARQUE_LENGTH - 1);
+        strncpy(v.Modele, modele, MAX_MODELE_LENGTH - 1);
+        root = addnode(root, v);
+    }
+
+    fclose(file);
+    printf("Base de données chargée avec succès.\n");
+    return root;
+}
