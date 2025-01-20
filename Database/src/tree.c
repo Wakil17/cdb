@@ -76,7 +76,7 @@ void inorder(Node* racine) {
     inorder(racine->right);
 }
 
-Node* deleteNode(Node** racine, int id){
+Node* deleteNode(Node* racine, int id){
 printf("Désolé cette fonctinalité n'est pas encore disponible...");
 
 // il aurait fallu faire un truc du style: 

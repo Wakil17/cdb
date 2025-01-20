@@ -20,5 +20,6 @@ Node* search(Node* root, int id);        // Rechercher par ID
 Node* searchMarque(Node* root, const char* marque);        // Rechercher par Marque
 void inorder(Node* root);                // Affiche toutes les voitures
 void freetree(Node* root);               // Libère la mémoire
+//Node* deleteNode(Node* root, int id); //supprime un node					 // 
 
 #endif

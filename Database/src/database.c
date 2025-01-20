@@ -1,5 +1,6 @@
 #include "database.h"
 #include <stdio.h>
+#include <string.h>
 int execute_command(Node** root, Command cmd) {
     switch(cmd.type) {
         case CMD_INSERT:
@@ -12,6 +13,7 @@ int execute_command(Node** root, Command cmd) {
 		        nouvelle_voiture.Modele[MAX_MODELE_LENGTH - 1] = '\0';
         
 		        *root = addnode(*root, nouvelle_voiture);
+			printf("Voiture ajoutée: ID: %d, Marque %s, Modèle: %s \n", nouvelle_voiture.id, nouvelle_voiture.Marque, nouvelle_voiture.Modele);
 			save_database(*root);
     }
             break;
@@ -25,14 +27,17 @@ int execute_command(Node** root, Command cmd) {
             break;
         case CMD_DELETE:
             // TODO: Supprimer record par ID
-	    {
+	    /*{
 	    Node* deleted = deleteNode(root, cmd.id);
 	    if(deleted == NULL) {
 	    printf("Aucune voiture avec l'ID %d n'a été trouvé.\n", cmd.id);
 	    }else{
-		printf("Voiture avec l'ID %d supprimée avec succès !\n");
+		printf("Voiture avec l'ID %d supprimée avec succès !\n", cmd.id);
+		
 	    }
-	    }
+
+	    }*/
+	    //return NULL;
             break;
         case CMD_EXIT:
             // TODO: Nettoyer et sortir
