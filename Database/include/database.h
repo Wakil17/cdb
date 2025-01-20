@@ -13,4 +13,8 @@ Node* init_database();
 // Fonction pour nettoyer la base de données
 void cleanup_database(Node* root);
 
+//Fonction pour save les noeuds et la base de données
+void save_database(Node* root);
+void save_node(Node* node, FILE* file);
+
 #endif

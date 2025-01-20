@@ -76,6 +76,15 @@ void inorder(Node* racine) {
     inorder(racine->right);
 }
 
+Node* deleteNode(Node** racine, int id){
+printf("Désolé cette fonctinalité n'est pas encore disponible...");
+
+// il aurait fallu faire un truc du style: 
+// 1. if(racine->id == id) -> supprimer racine.data 
+// 2. si racine->left/right != NULL -> on va chercher les enfants et on les "remonte" 
+
+}
+
 //Libère récursivement tous les nœuds de l'arbre
 void freetree(Node* racine) {
     if (racine == NULL) {
@@ -86,8 +95,8 @@ void freetree(Node* racine) {
     free(racine);
 }
 
-//=== Test intégré ===
-int main() {
+//=== Test ===
+/*int main() {
     Node* racine = NULL;
 
     // Création de quelques voitures
@@ -137,5 +146,5 @@ int main() {
     racine = NULL;
 
     return 0;
-}
+}*/
 

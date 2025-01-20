@@ -12,6 +12,7 @@ int execute_command(Node** root, Command cmd) {
 		        nouvelle_voiture.Modele[MAX_MODELE_LENGTH - 1] = '\0';
         
 		        *root = addnode(*root, nouvelle_voiture);
+			save_database(*root);
     }
             break;
         case CMD_SELECT:
@@ -24,10 +25,21 @@ int execute_command(Node** root, Command cmd) {
             break;
         case CMD_DELETE:
             // TODO: Supprimer record par ID
+	    {
+	    Node* deleted = deleteNode(root, cmd.id);
+	    if(deleted == NULL) {
+	    printf("Aucune voiture avec l'ID %d n'a été trouvé.\n", cmd.id);
+	    }else{
+		printf("Voiture avec l'ID %d supprimée avec succès !\n");
+	    }
+	    }
             break;
         case CMD_EXIT:
             // TODO: Nettoyer et sortir
-            break;
+		save_database(*root);
+		cleanup_database(*root);
+		*root = NULL;
+          	return 1;
         default:
             return -1;
     }
@@ -41,5 +53,8 @@ Node* init_database() {
 
 void cleanup_database(Node* root) {
     // TODO: Nettoyer la base de données
+    save_database(root);
+    freetree(root);
+    printf("Base de donnée nettoyée et sauvegardée avec succès !\n");
 }
 
