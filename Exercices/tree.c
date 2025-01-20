@@ -53,15 +53,24 @@ void inorder(Node* racine){
 
 Node* search(Node* racine, int value){
 
-	if(racine == NULL) {return NULL;}
-	if(racine->value == value){
-		return racine; 
-	}else{
-		search(racine->left, value);
-		search(racine->right, value);	
+	if(racine == NULL) {
+		printf("Element non trouvé... \n,");
+		return NULL;
 	}
+	if(racine->value == value){
+		
+		printf("Trouvé ! %d \n", racine->value);
+		return racine; 
+	
+	}else if (value > racine->value){
+		
+		return search(racine->right, value);
 
-
+		}else{
+		
+		return search(racine->left, value);	
+		
+		}
 
 }
 
@@ -80,12 +89,7 @@ int main(){
 	inorder(head);
 	printf("\n");
 	
-	Node* find = search(head, 9);
-	if(find){
-		printf("Trouvé ! %d \n ", find->value);
-	}else{
-		printf("Element non trouvé...");
-	}
-
+	search(head, 9);
+	search(head, 33);
 	return 0; 
 }
