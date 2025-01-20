@@ -1,19 +1,16 @@
 #include "parser.h"
 #include <stdio.h>
 #include <string.h>
-//Command parse_command(char* input) {
-  //  Command cmd = {CMD_ERROR};
-//}
-
+Command parse_command(char* input) {
+    Command cmd = {CMD_ERROR};}
 int main(){    
     // TODO:
     // 1. Séparer la ligne en mots
-    const char* delim = " ";
-    char input[] = "insert 1 bmw m3";
-    char* token = strtok(input, delim);
+    char* input = "insert 1 bmw m3";
+    char* token = strtok(input,"");
     while(token != NULL){
     printf("Token: %s\n", token);
-    token = strtok(NULL,delim);
+    token = strtok(NULL == "");
     }
 
     // 2. Si "insert", parser id, name, email
