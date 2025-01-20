@@ -20,7 +20,7 @@ Node*  newnode(int value){
 	new->left = NULL;
        	new->right = NULL;
 
-	printf("Noeaud crée avec succès ! \n  Value: %d", new->value);	
+	printf("Noeaud crée avec succès !  Value: %d \n", new->value);	
 	return new;
 }
 
@@ -43,7 +43,10 @@ Node* addnode(Node* racine, int value){
 
 
 void inorder(Node* racine){
-
+	if (racine == NULL) {return;}
+	inorder(racine->left);
+	printf("%d", racine->value);
+	inorder(racine->right);
 
 }
 
