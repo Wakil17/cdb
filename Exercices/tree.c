@@ -51,6 +51,22 @@ void inorder(Node* racine){
 }
 
 
+Node* search(Node* racine, int value){
+
+	if(racine == NULL) {return;}
+	if(racine->value == value){
+		return racine; 
+	}else{
+		search(racine->left, value);
+		search(racine->right, value);	
+	}
+
+
+
+}
+
+
+
 int main(){
 
 	Node* head = NULL;
