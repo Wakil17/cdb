@@ -55,19 +55,19 @@ Command parse_command(char* input) {
     return cmd;
 }
 //test
-int main() {
-    char input[] = "insert 1 bmw m3";
-    Command cmd = parse_command(input);
+//int main() {
+  //  char input[] = "insert 1 bmw m3";
+    //Command cmd = parse_command(input);
 
     // Afficher le résultat pour vérification
-    printf("Type de commande: %d\n", cmd.type);
-    if (cmd.type == CMD_INSERT) {
-        printf("ID: %d\n", cmd.id);
-        printf("Marque: %s\n", cmd.marque);
-        printf("Modèle: %s\n", cmd.modele);
-    } else if (cmd.type == CMD_DELETE) {
-        printf("ID: %d\n", cmd.id);
-    }
+   //printf("Type de commande: %d\n", cmd.type);
+    //if (cmd.type == CMD_INSERT) {
+        //printf("ID: %d\n", cmd.id);
+        //printf("Marque: %s\n", cmd.marque);
+        //printf("Modèle: %s\n", cmd.modele);
+   // } else if (cmd.type == CMD_DELETE) {
+        //printf("ID: %d\n", cmd.id);
+	//}
 
-    return 0;
-}
+    //return 0;
+//}
